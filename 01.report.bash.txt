@@ -32,7 +32,7 @@ sed -n -e '3,5p' fstab.hd > extract.txt
 
 7. List all files in current directory, recursively, to which the user has full permissions:
 
-
+ls -ls
 
 8. Compare two files and show percentage of similarities between them:
 
