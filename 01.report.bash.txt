@@ -28,11 +28,11 @@ head -3 /etc/fstab.hd; tail -3 /etc/fstab.hd
 
 6. Retrieve line number 5 to 10 from the file “/etc/fstab” and write these lines into a new file “extract.txt”
 
-sed -n -e '3,5p' fstab.hd > extract.txt
+sed -n -e '5,10p' fstab.hd > extract.txt
 
 7. List all files in current directory, recursively, to which the user has full permissions:
 
-ls -ls
+ls -lra
 
 8. Compare two files and show percentage of similarities between them:
 
