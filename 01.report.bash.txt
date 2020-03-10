@@ -1,0 +1,42 @@
+1. List everyone logged in and save the list in the file called "users" in your own home directory:
+
+w > ~/users
+
+2. List all process that are running and add this list to the end of "users" file:
+
+ps -a >> ~/users
+
+3. List everyone who is logged on sorted by their username
+
+w | sort
+
+4. Count number of session each logged in user, sorted by this number in descending order
+
+w | sort -r
+
+5. Show content of the first and last 3 lines of the file '/etc/fstab'
+
+// my folder /etc has 2 file fstab: fstab.hd and fstab.hd~previous
+// I cannot open any of them
+// but maybe the solution is:
+
+head -3 /etc/fstab.hd; tail -3 /etc/fstab.hd
+
+// need .hd if not, there is a notice 
+//  + head: /etc/fstab: No such file or directory
+//  + tail: /etc/fstab: No such file or directory
+
+6. Retrieve line number 5 to 10 from the file “/etc/fstab” and write these lines into a new file “extract.txt”
+
+sed -n -e '3,5p' fstab.hd > extract.txt
+
+7. List all files in current directory, recursively, to which the user has full permissions:
+
+
+
+8. Compare two files and show percentage of similarities between them:
+
+
+
+9. Find all files in current directory, recursively, that are at least 90% similar:
+
