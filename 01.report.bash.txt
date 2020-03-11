@@ -76,3 +76,5 @@ for f1 in $list; do
 	done
 done
 
+// [ -f "$f1" ]: true if f1 exists and is a regular file (not a block or character device or a directory)
+
