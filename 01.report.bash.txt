@@ -36,7 +36,21 @@ ls -lRa | grep "^-rwx"
 
 8. Compare two files and show percentage of similarities between them:
 
+./compare.sh a.txt b.txt
 
+// in compare.sh file:
+#!/bin/bash 
+diffLines=`diff $1 $2 | egrep "^(>|<)" | wc -l`
+echo $diffLines
+aLines=`wc -l < $1`
+bLines=`wc -l < $2`
+echo $aLines
+echo $bLines
+diffPer=`echo "$diffLines * 100 * 2 / ($aLines + $bLines)" | bc`
+echo $diffPer
+similar=`echo "100-$diffPer" | bc`
+
+echo Similariry $similar
 
 9. Find all files in current directory, recursively, that are at least 90% similar:
 
