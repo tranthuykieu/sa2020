@@ -39,23 +39,40 @@ ls -lRa | grep "^-rwx"
 ./compare.sh a.txt b.txt
 
 // in compare.sh file:
-#!/bin/bash 
-#!/bin/bash
 
+#!/bin/bash 
 diffLines=`diff $1 $2 | egrep "^(>|<)" | wc -l`
 aLines=`wc -l < $1`
 bLines=`wc -l < $2`
-if [ $aLines -eq 0 ] && [ $bLines -eq 0 ]; then
-	exit 0
-fi
-
+echo $aLines
+echo $bLines
 diffPer=`echo "$diffLines * 100 * 2 / ($aLines + $bLines)" | bc`
+echo $diffPer
 similar=`echo "100-$diffPer" | bc`
 
-if [ "$similar" -gt 90 ]; then
-	echo Similarity $similar: $1 $2
-fi
+echo Similariry $similar
 
 
 9. Find all files in current directory, recursively, that are at least 90% similar:
+
+list=`find .`
+for f1 in $list; do
+	for f2 in list; do
+		if [ "$f1" != "$f2" ] && [ -f "$f1" ] && [ -f "$f2" ]; then
+			diffLines=`diff $1 $2 | egrep "^(>|<)" | wc -l`
+			aLines=`wc -l < $1`
+			bLines=`wc -l < $2`	
+			if [ $aLines -eq 0 ] && [ $bLines -eq 0 ]; then
+				exit 0
+			fi
+
+			diffPer=`echo "$diffLines * 100 * 2 / ($aLines + $bLines)" | bc`
+			similar=`echo "100-$diffPer" | bc`
+
+			if [ "$similar" -gt 90 ]; then
+				echo Similarity $similar: $1 $2
+			fi
+		fi
+	done
+done
 
