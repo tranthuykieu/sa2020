@@ -12,17 +12,17 @@ w | sort
 
 4. Count number of session each logged in user, sorted by this number in descending order
 
-w | sort -r
+who | cut -d " " f1 | sort -n | uniq -c
 
 5. Show content of the first and last 3 lines of the file '/etc/fstab'
 
-// my folder /etc has 2 file fstab: fstab.hd and fstab.hd~previous
+// my folder /etc has 2 files fstab: fstab.hd and fstab.hd~previous
 // I cannot open any of them
 // but maybe the solution is:
 
 head -3 /etc/fstab.hd; tail -3 /etc/fstab.hd
 
-// need .hd if not, there is a notice 
+// need .hd if not, there are the notices:
 //  + head: /etc/fstab: No such file or directory
 //  + tail: /etc/fstab: No such file or directory
 
@@ -32,7 +32,7 @@ sed -n -e '5,10p' fstab.hd > extract.txt
 
 7. List all files in current directory, recursively, to which the user has full permissions:
 
-ls -lra
+ls -lRa | grep "^-rwx"
 
 8. Compare two files and show percentage of similarities between them:
 
