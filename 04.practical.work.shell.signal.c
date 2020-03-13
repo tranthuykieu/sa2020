@@ -31,6 +31,11 @@ int main(int argc, char const *argv[]) {
     // Ctrl + Z
     signal(SIGTSTP, handler);
 
+    // Ctrl + C or kill
+    signal(SIGINT, handler);
+    signal(SIGTERM, handler);
+
+
 	while (1) {
 		printf("Enter command:");
 		fgets(input, sizeof(input), stdin);
