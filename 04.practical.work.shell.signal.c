@@ -25,8 +25,8 @@ void handler(int signal_num) {
 
 int main(int argc, char const *argv[]) {
 
-	char input[100];
-	char *args[10];
+    char input[100];
+    char *args[10];
 
     // Ctrl + Z
     signal(SIGTSTP, handler);
