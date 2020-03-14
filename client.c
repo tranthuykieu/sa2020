@@ -55,8 +55,8 @@ int main(int argc, char* argv[]) {
         // TODO: add logics to communicate with server
         bzero(mess, strlen(mess));
         printf("Client enters message: ");
-        scanf("%s", mess);
-        // fgets(mess, sizeof(mess), stdin);
+        // scanf("%s", mess);
+        fgets(mess, sizeof(mess), stdin);
         send(sockfd, mess, strlen(mess), 0);
 
         bzero(mess, strlen(mess));
